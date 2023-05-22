@@ -24,7 +24,7 @@ def get_five_last_operations(list_sorted):
     return five_last_operations
 
 
-def sorted_by_date(json_dict):
+def sorted_by_date(json_dict=None):
     """Функция сортирует операции по дате.
     Более поздние операции находятся вверху списка."""
     list_sorted = sorted(json_dict, key=lambda x: x.get("date"), reverse=True)
@@ -38,7 +38,7 @@ def bank_account_hide(operation_expenditure):
         number_bank_account = operation_expenditure.split(" ")[-1]
 
     if len(number_bank_account) == 16:
-        number_hide = number_bank_account[:6] + "*" * 6 + number_bank_account[:-4]
+        number_hide = number_bank_account[:6] + "*" * 6 + number_bank_account[-4:]
         number_separated = [number_hide[i:i + 4] for i in range (0,len(number_bank_account), 4)]
         return f'{name_bank_account} {" ".join(number_separated)}'
 
@@ -49,7 +49,8 @@ def bank_account_hide(operation_expenditure):
 
 
 def information_output(operations):
+    """Функция выводит информацию о пяти последних операциях пользователю"""
     for operation in operations:
-        print(f"{date_format(operation["date"])} {operation["description"]}\n")
-        f"{bank_account_hide(operation["from"])} -> {bank_account_hide(operation["to"])}\n"
-        f"{operation["amount"]} {operation["currency"]}\n)
+        print(f"{date_format(operation['date'])} {operation['description']}\n"
+              f"{bank_account_hide(operation['from'])} -> {bank_account_hide(operation['to'])}\n"
+              f"{operation['amount']} {operation['currency'] ['name']}\n")
