@@ -9,4 +9,4 @@ def main():
     last_5 = get_five_last_operations(list_sorted)
     print(information_output(last_5))
 main()
-type(load_operations(filename))
+
