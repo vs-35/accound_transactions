@@ -25,10 +25,10 @@ def get_five_last_operations(list_sorted):
     return five_last_operations
 
 
-def sorted_by_date(json_dict=None):
+def sorted_by_date(json_dict):
     """Функция сортирует операции по дате.
     Более поздние операции находятся вверху списка."""
-    list_sorted = sorted(json_dict, key=lambda x: x.get('date'), reverse=True)
+    list_sorted = sorted(json_dict, key=lambda x: x.get("date"), reverse=True)
     return list_sorted
 
 
