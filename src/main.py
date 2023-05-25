@@ -1,4 +1,4 @@
-from utils import load_operations, get_five_last_operations, sorted_by_date, information_output
+from src.utils import load_operations, get_five_last_operations, sorted_by_date, information_output
 
 filename = "../data/operations.json"
 

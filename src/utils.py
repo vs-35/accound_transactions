@@ -13,8 +13,8 @@ def load_operations(filename):
 
 def date_format(date_string):
     """Функция преобразует универсальный формат даты операции в заданный формат"""
-    date_parsed = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%f')
-    date_operation = date_parsed.strptime(date_operation, '%d.%m.%Y')
+    dt_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%f')
+    date_operation = datetime.strftime(dt_object, '%d.%m.%Y')
     return date_operation
 
 
@@ -28,7 +28,7 @@ def get_five_last_operations(list_sorted):
 def sorted_by_date(json_dict=None):
     """Функция сортирует операции по дате.
     Более поздние операции находятся вверху списка."""
-    list_sorted = sorted(json_dict, key=lambda x: x.get("date"), reverse=True)
+    list_sorted = sorted(json_dict, key=lambda x: x.get('date'), reverse=True)
     return list_sorted
 
 
