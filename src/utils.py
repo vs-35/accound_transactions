@@ -8,7 +8,8 @@ def load_operations(filename):
     """Функция загружает список операций из файла"""
     with open(filename, "r", encoding="utf-8") as file:
         json_dict = json.load(file)
-        return json_dict
+        valid_dict = [op for op in json_dict if op != {}]
+        return valid_dict
 
 
 def date_format(date_string):
@@ -53,5 +54,5 @@ def information_output(operations):
     """Функция выводит информацию о пяти последних операциях пользователю"""
     for operation in operations:
         print(f"{date_format(operation['date'])} {operation['description']}\n"
-              f"{bank_account_hide(operation.get['from'])} -> {bank_account_hide(operation.get['to'])}\n"
-              f"{operation['amount']} {operation['currency'] ['name']}\n")
+              f"{bank_account_hide(operation.get('from'))} -> {bank_account_hide(operation.get('to'))}\n"
+              f"{operation['operationAmount']['amount']} {operation['operationAmount']['currency'] ['name']}\n")
